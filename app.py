@@ -1,10 +1,14 @@
 import asyncio
 import datetime
 import json
-import os
 import re
 import subprocess
-from flet import *
+from flet import (
+    UserControl, Container, WindowDragArea, GestureDetector, padding, border, 
+    Row, Image, Text, ClipBehavior, TapEvent, Radio, RadioGroup, Column, 
+    transform, animation, alignment, AnimationCurve, Card, TextField, TextStyle, InputBorder, Margin,
+    HoverEvent, Stack, Page, WEB_BROWSER, app
+)
 from pytube import YouTube
 import requests
 height = 890
@@ -145,12 +149,12 @@ class Main(UserControl):
     "Montserrat Regular":"fonts/montserrat/Montserrat-Regular.ttf",
     "Montserrat Bold":"fonts/montserrat/Montserrat-Bold.ttf",
   }
-    pg.window_height = height
-    pg.window_width = width
-    pg.window_bgcolor = colors.TRANSPARENT
-    pg.bgcolor = colors.TRANSPARENT
-    pg.window_title_bar_hidden =True
-    pg.window_frameless = True
+    pg.window.height = height
+    pg.window.width = width
+    pg.window.bgcolor = "transparent"
+    pg.bgcolor = "transparent"
+    pg.window.title_bar_hidden =True
+    pg.window.frameless = True
     
     self.pg = pg
 
@@ -321,7 +325,7 @@ class Main(UserControl):
                     height=drag_height+25,
                     content=WindowDragArea(
                       content=Container(
-                        margin=margin.only(top=25),
+                        margin=Margin(left=25,top=25,right=25,bottom=25),
                         content=Row(
                           alignment='spaceBetween',
                           controls=[
